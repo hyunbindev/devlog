@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.devlog.devlog.aspect.annotation.CheckOwner;
-import com.devlog.devlog.aspect.annotation.TestAspect;
 import com.devlog.devlog.data.dto.MemberDTO;
 import com.devlog.devlog.data.dto.PostDTO;
 import com.devlog.devlog.service.MemberService;
@@ -35,7 +34,7 @@ public class JournalController {
     	model.addAttribute("memberDTO", memberDTO);
     	List<PostDTO>postDTOs = postService.getPostList(memberDTO);
     	model.addAttribute("postDTOs",postDTOs);
-        return "thymeleaf/main";
+        return "thymeleaf/journal/main";
 	}
 	
 	@CheckOwner
@@ -49,6 +48,6 @@ public class JournalController {
 		model.addAttribute("memberDTO",writerDTO);
 		model.addAttribute("postDTO",postDTO);
 		
-		return "thymeleaf/post";
+		return "thymeleaf/journal/post";
 	}
 }

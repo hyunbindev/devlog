@@ -23,13 +23,18 @@ import lombok.extern.slf4j.Slf4j;
 public class MangeController {
 	private final PostService postService;
 	private final MemberService memberService;
-
-	@GetMapping("/post")
+	
+	@GetMapping
+	public String getManageView(Authentication authentication){
+		return "/thymeleaf/createpost";
+	}
+	
+	@GetMapping("/newpost")
 	public String createPostView(Authentication authentication) {
 		return "/thymeleaf/createpost";
 	}
 	
-	@PostMapping("/post")
+	@PostMapping("/newpost")
 	public String createPost(Authentication authentication , @RequestParam("title")String title, @RequestParam("text")String text) {
 		PostDTO postDTO = new PostDTO();
 		MemberDTO writerDTO = new MemberDTO();
