@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{thymeleaf/journal_layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <title th:text="${memberDTO.name}+'님의 DevLog'"></title>
+</head>
+<body>
+    <!-- info fragment를 레이아웃 내에 포함시킴 -->
+    <div layout:fragment="info" th:replace="~{thymeleaf/info}"></div>
+
+    <div layout:fragment="content" class="content">
+		<ul class="postList">
+		    <th:block th:each="post : ${postDTOs}">
+				<a th:href="@{/journal/{memberId}/{postId}(memberId=${memberDTO.id}, postId=${post.id})}" class="post-link">
+				    <div class="post">
+				        <h2 th:text="${post.title}">post title</h2>
+				        <div class="createDate" th:text="${#temporals.format(post.createDate, 'yyyy년 MM월 dd일 HH:mm')}"></div>
+				        <div th:text="${post.text}">text</div>
+				    </div>
+				</a>
+		    </th:block>
+		</ul>
+    </div>
+</body>
+</html>

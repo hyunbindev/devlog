@@ -1,0 +1,64 @@
+body{
+	background-color: white;
+	color:black;
+	display: flex;
+	margin:0px;
+	.info{
+		padding: 0px 30px;
+		height:100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		img{
+			border-radius: 50%;
+			width: 200px;
+		}
+		.buttons{
+			display:flex;
+			button{
+				margin:5px;
+				padding:5px;
+				width:100px;
+				background-color:rgb(221, 221, 221);
+				border-radius: 5px;
+				border: none;
+				cursor: pointer;
+			}
+		}
+	}
+	a {
+    text-decoration: none;  /* 밑줄 제거 */
+    color: inherit;          /* 텍스트 색상 기본 값으로 설정 */
+	}
+	.content{
+		flex-grow:1;
+	}
+	.postList{
+		.post{
+			margin: 5px 10px;
+			padding:10px;
+			cursor: pointer;
+		}
+		.post:hover{
+			background-color:rgb(221, 221, 221);
+		}
+		h2{
+			margin:0px;
+		}
+		ul, ol {
+		    list-style: none; /* 기본 리스트 스타일 제거 */
+		    margin: 0;         /* 기본 margin 제거 */
+		    padding: 0;        /* 기본 padding 제거 */
+		}
+		li{
+			list-style-type:none;
+		}
+		li:hover{
+			background-color:rgba(255, 255, 255, 0.795);
+		}
+		.createDate{
+			color:gray;
+		}
+	}
+}

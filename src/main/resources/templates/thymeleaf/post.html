@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{thymeleaf/journal_layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <title>Document</title>
+</head>
+<body>
+    <!-- info fragment를 레이아웃 내에 포함시킴 -->
+    <div layout:fragment="info" th:replace="~{thymeleaf/info}"></div>
+
+    <div layout:fragment="content" class="content">
+        <h2 th:text="${postDTO.title}"></h2>
+        <div th:text="${postDTO.createDate}"></div>
+        <div th:utext="${postDTO.text}"></div>
+    </div>
+</body>
+</html>

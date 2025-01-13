@@ -1,0 +1,13 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <div class="info">
+        <img th:src="${memberDTO.avatar_url}"></img>
+        <a th:href="@{/journal/{memberId}(memberId=${memberDTO.id})}">
+        	<h2 th:text="${memberDTO.name}"></h2>
+        </a>
+        <div th:text="${memberDTO.bio}"></div>
+        <div class="buttons" th:if="${isOwner}">
+        	<a th:href="@{/manage/post}"><button>글쓰기</button></a>
+        	<a th:href="@{/manage/post}"><button>관리</button></a>
+        </div>
+    </div>
+</html>
