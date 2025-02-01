@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevEditor Example</title>  <!-- 빌드된 JavaScript 파일 로드 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet">
+
+  <!-- Include the highlight.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  
+  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+  <body>
+      <div>
+      	<input id="title" th:value="${post.title}" placeholder="제목을 입력해 주세요">
+      	
+        <select id="boardDrop">
+      		<th:block th:each="boardDTO : ${boardDTOs}">
+        		<option th:text="${boardDTO.title}" th:value="${boardDTO.id}" th:selected="${boardDTO.id == post.board.id}"></option>
+      		</th:block>
+      	</select>
+      	
+      </div>
+      <div id="toolbar">
+        <span class="ql-formats">
+            <button class="ql-bold"></button> <!-- 굵게 -->
+            <button class="ql-italic"></button> <!-- 기울임 -->
+            <button class="ql-underline"></button> <!-- 밑줄 -->
+            <button class="ql-blockquote"></button>
+            <button class="ql-code-block"></button>
+            <select class="ql-size">
+                <option value="small"></option>
+                <option selected></option>
+                <option value="large"></option>
+                <option value="huge"></option>
+            </select>
+        </span>
+        <span class="ql-formats">
+            <select class="ql-header">
+                <option value="1">제목 1</option>
+                <option value="2">제목 2</option>
+                <option selected>본문</option>
+            </select>
+        </span>
+        <span class="ql-formats">
+            <button class="ql-list" value="ordered"></button> <!-- 번호 리스트 -->
+            <button class="ql-list" value="bullet"></button>  <!-- 불릿 리스트 -->
+        </span>
+        <span class="ql-formats">
+            <select class="ql-align"></select> <!-- 정렬 -->
+        </span>
+        <span class="ql-formats">
+            <select class="ql-color"></select> <!-- 글자색 -->
+            <select class="ql-background"></select> <!-- 배경색 -->
+        </span>
+        <span class="ql-formats">
+            <button class="ql-link"></button>  <!-- 링크 -->
+            <button class="ql-image"></button> <!-- 이미지 -->
+            <button class="ql-video"></button> <!-- 동영상 -->
+        </span>
+    </div>
+    <div id="editable"></div>
+    <button id="update">update</button>
+    
+    <script th:src="@{/js/textEditor.js}"></script>
+    
+    <script th:inline="javascript">
+    	quill.clipboard.dangerouslyPasteHTML(0,[[${post.text}]]);
+    	const updatePostBtn = document.getElementById('update')
+    	updatePostBtn.addEventListener('click',()=>{updatePost([[${post.id}]])})
+    </script>
+  </body>
+</html>

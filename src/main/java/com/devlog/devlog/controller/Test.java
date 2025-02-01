@@ -3,6 +3,7 @@ package com.devlog.devlog.controller;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,11 +15,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
 @Controller
 @Slf4j
+@RequestMapping
 public class Test {
 	private final MemberService memberService;
 	
 	public Test(MemberService memberService) {
 		this.memberService = memberService;
+	}
+	@GetMapping
+	@ResponseBody
+	public String testindex() {
+		return "main";
 	}
 	
     @GetMapping("/test")

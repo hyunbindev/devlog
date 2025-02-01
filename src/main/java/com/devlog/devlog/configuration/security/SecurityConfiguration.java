@@ -24,7 +24,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
-    private final String[] publicURL ={"/*","/journal/*","/test","/oauth2/authorization/*","/login/oauth2/code/*","/css/*","/js/*"};
+    private final String[] publicURL ={"/journal/**","/css/*","/js/*"};
     private final String[] devURL ={"/h2-console/*"};
 
     private final OAuth2UserService oauth2UserService;
@@ -42,11 +42,12 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .oauth2Login(this::setOauth2)
                 .headers((headers)->headers.frameOptions((HeadersConfigurer.FrameOptionsConfig::disable)));
-        //jwt 검증 필터
+        /*
+         * 세션으로 전환
         http.addFilterBefore (new ValidateAccessToken(jwtTokenProvider,passFilterURL()), OAuth2LoginAuthenticationFilter.class);
 
         http.sessionManagement((session)->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-
+        */
         return http.build();
     }
     //접근 권환 설정

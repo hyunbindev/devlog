@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <timestamp key="BY_DATE" datePattern="yyyy-MM-dd"/>
+    
+    <!-- 로그 패턴 정의 -->
+    <property name="LOG_PATTERN"
+              value="[%d{yyyy-MM-dd HH:mm:ss}:%-4relative] [%thread] %highlight(%-5level) %green([%C.%M:%yellow(%L)]) - %msg%n"/>
+    <property name="LOG_FILE_PATTERN"
+              value="[%d{yyyy-MM-dd HH:mm:ss}] [%thread] %-5level [%C.%M:%L] - %msg%n"/>
+
+    <!-- 개발 환경에서는 콘솔에만 출력 -->
+    <springProfile name="!prod">
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>${LOG_PATTERN}</pattern>
+            </encoder>
+        </appender>
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <!-- 운영 환경(prod)에서는 파일에도 저장 -->
+    <springProfile name="!prod">
+        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            
+            <!-- 로그 파일을 날짜별로 관리 -->
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>logs/application-%d{yyyy-MM-dd}.log</fileNamePattern>
+                <maxHistory>30</maxHistory> <!-- 30일 동안 로그 보관 -->
+                <totalSizeCap>1GB</totalSizeCap> <!-- 최대 1GB까지 로그 저장 -->
+            </rollingPolicy>
+
+            <encoder>
+                <pattern>${LOG_FILE_PATTERN}</pattern>
+            </encoder>
+        </appender>
+        <!-- restart thread 제외 필터 -->
+        <root level="INFO">
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+</configuration>

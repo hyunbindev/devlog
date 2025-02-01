@@ -16,6 +16,10 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 @Slf4j
+/*
+ * 세션으로 전환 추후 클라이언트 사이드 랜더링을 위해 남겨둠
+ */
+@Deprecated
 public class ValidateAccessToken extends OncePerRequestFilter {
     private final JwtTokenProvider jwtTokenProvider;
     private final String[] publicURLs;

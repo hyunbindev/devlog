@@ -11,6 +11,16 @@ public class PostDTO {
 	private Long id;
 	private MemberDTO writer;
 	private String title;
+	private BoardDTO board;
 	private String text;
+	private String thumbText;
 	private LocalDateTime createDate;
+	
+	public PostDTO() {
+		
+	}
+	
+	public PostDTO(Long postId) {
+		this.id = postId;
+	}
 }

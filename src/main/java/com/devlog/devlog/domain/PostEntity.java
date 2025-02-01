@@ -45,6 +45,8 @@ public class PostEntity {
     @Column(nullable = false)
     private String text;
     
+    private String thumbText;
+    
     @CreationTimestamp
 	private LocalDateTime createDate;
 }

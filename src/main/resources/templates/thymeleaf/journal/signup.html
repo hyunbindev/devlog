@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div id="signup_container">
+		<h2>DevLog와 함께하기</h2>
+		<form th:action="@{/signup}" method="post">
+			<input th:value="${name}" placeholder="이름을 입력해 주세요" name="name">
+			<input th:value="${bio}" placeholder="한줄소개를 입력해 주세요" name="bio">
+			<input th:value="${email}"placeholder="이메일을 입력해 주세요" name="email">
+			<button type="submit">DevLog와 함께하기</button>
+		</form>
+	</div>
+</body>
+</html>

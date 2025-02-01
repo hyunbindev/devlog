@@ -3,7 +3,9 @@ package com.devlog.devlog.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -22,7 +24,5 @@ public class MemberEntity {
     private String bio;
     private String email;
     private String avatar_url;
-    
-    @OneToMany
-    private List<BoardEntity> boards = new ArrayList<>();
+    private String repos_url;
 }

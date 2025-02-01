@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{thymeleaf/journal/journal_layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+    <!-- info fragment를 레이아웃 내에 포함시킴 -->
+    <div layout:fragment="info" th:replace="~{thymeleaf/journal/info}"></div>
+
+    <div layout:fragment="content" class="content">
+    	<div id="boardHeader">
+    	    <h2>
+    	    	<span th:text="${boardDTO.title}"></span>
+    			<span th:text="'(' + ${boardDTO.postCount} + ')'"></span>
+    	    </h2>
+    	</div>
+		<ul class="postList">
+			    <th:block th:each="post : ${postDTOs}">
+					<a th:href="@{/journal/{memberId}/{postId}(memberId=${memberDTO.id}, postId=${post.id})}" class="post-link">
+					    <div class="post">
+					        <h3 th:text="${post.title}">post title</h3>
+					        <div class="thumbText" th:text="${post.thumbText}">text</div>
+					        <div class="postInfo">
+						        <span class="postBoardTitle" th:text="${post.board.title}"></span>
+						        <span> . </span>
+						        <span class="createDate" th:text="${#temporals.format(post.createDate, 'yyyy년 MM월 dd일')}"></span>
+					        </div>
+					    </div>
+				</a>
+			 </th:block>
+		</ul>
+    </div>
+</body>
+</html>

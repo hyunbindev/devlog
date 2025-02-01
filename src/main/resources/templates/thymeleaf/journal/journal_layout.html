@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>레이아웃 템플릿</title>
+    <title th:text="${memberDTO.name}+'님의 DevLog'"></title>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" rel="stylesheet">
+
+  <!-- Include the highlight.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  
+  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div layout:fragment="info">
         <!-- info fragment 영역에 삽입될 내용 -->
     </div>
-
+    <div layout:fragment="board">
+        <!-- info fragment 영역에 삽입될 내용 -->
+    </div>
     <div layout:fragment="content">
         <!-- content fragment 영역에 삽입될 내용 -->
     </div>
 </body>
+<script th:src="@{/js/post.js}"></script>
 </html>

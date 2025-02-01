@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{thymeleaf/journal_layout}">
+      layout:decorate="~{thymeleaf/journal/journal_layout}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +11,28 @@
 </head>
 <body>
     <!-- info fragment를 레이아웃 내에 포함시킴 -->
-    <div layout:fragment="info" th:replace="~{thymeleaf/info}"></div>
-
-    <div layout:fragment="content" class="content">
-        <h2 th:text="${postDTO.title}"></h2>
-        <div th:text="${postDTO.createDate}"></div>
-        <div th:utext="${postDTO.text}"></div>
+    <div layout:fragment="info" th:replace="~{thymeleaf/journal/info}"></div>
+    
+    
+    <div layout:fragment="content" class="content ql-snow">
+    	    <div id="toast">
+    		</div>
+    	<div id="postView">
+	        <h2 th:text="${postDTO.title}"></h2>
+		        <div id="info">
+		        <div th:text="${#temporals.format(postDTO.createDate, 'yyyy년 MM월 dd일')}"></div>
+		        <a th:text="${boardDTO.title}" th:href="@{/journal/board/{memberId}/{boardTitle}(memberId=${memberDTO.id} , boardTitle=${boardDTO.title})}">
+		        	
+		        </a>
+	        </div>
+	        
+	        <div class="ql-editor" th:utext="${postDTO.text}"></div>
+        </div>
+        <div id="postbtn_container">
+        	<button id="deleteBtn">삭제</button>
+        	<a id="updateBtn" th:href="@{/manage/updatepost/{postId}(postId=${postDTO.id})}">수정</a>
+		</div>
     </div>
+    <script th:src="@{/js/post.js}"></script>
 </body>
 </html>

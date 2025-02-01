@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <div class="menu">
+    	<div id="profile">
+    		<img th:src="${memberDTO.avatar_url}"></img>
+    		<div th:text = "${memberDTO.name}"></div>
+    		<a th:href="@{/journal/{memberId}(memberId=${memberDTO.id})}">DEVLOGURL</a>
+		</div>
+    	<div class="wrap_menu">
+			<strong class="title_menu"><a th:href="@{/manage}">devLog 관리홈</a></strong>
+		</div>
+		<div class="wrap_menu">
+			<ul class="list_menu">
+				<strong class="title_menu">프로필 관리</strong>
+				<li>
+					<a>프로필 수정</a>
+				</li>
+				<li>
+					<a>프로필 링크 수정</a>
+				</li>
+			</ul>
+		</div>
+		<div class="wrap_menu">
+			<ul class="list_menu">
+				<strong class="title_menu">계시글 관리</strong>
+				<li>
+					<a th:href="@{/manage/fixpost}">고정 포스트 관리</a>
+				</li>
+				<li>
+					<a th:href="@{/manage/post}">포스트 관리</a>
+				</li>
+				<li>
+					<a th:href="@{/manage/board}">게시판 관리</a>
+				</li>
+			</ul>
+		</div>
+		<div class="wrap_menu">
+			<ul class="list_menu">
+				<strong class="title_menu">통계</strong>
+				<li>
+					<a th:href="@{/manage/statistics}">통계</a>
+				</li>
+				<li>
+					<a th:href="@{/manage/post}">유입 경로</a>
+				</li>
+			</ul>
+		</div>
+    </div>
+</html>

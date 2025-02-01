@@ -15,6 +15,7 @@ public class CustomOAuth2User implements OAuth2User {
         attributes.put("bio",memberDTO.getBio());
         attributes.put("email",memberDTO.getEmail());
         attributes.put("avatar_url",memberDTO.getAvatar_url());
+        attributes.put("repos_url",memberDTO.getRepos_url());
     }
     @Override
     public Map<String, Object> getAttributes() {

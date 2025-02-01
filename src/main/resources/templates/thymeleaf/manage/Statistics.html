@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{thymeleaf/manage/manage_layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <title>관리자 페이지</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script th:src="@{/js/manageStatistics.js}"></script>
+</head>
+<body>
+    <!-- info fragment를 레이아웃 내에 포함시킴 -->
+    <div layout:fragment="menu" th:replace="~{thymeleaf/manage/menu}"></div>
+    <div layout:fragment="content" class="content">
+    	<div id="manage_statistics">
+    		<h2>통계</h2>
+    		<div id="summary">
+    			<div class="element">
+    				<div class="text">오늘 조회수</div>
+    				<div id="today_view_count" class="count">78979878</div>
+    			</div>
+    			<div class="element">
+    				<div class="text">누적 조회수</div>
+    				<div id="total_view_count" class="count">78979878</div>
+    			</div>
+    			
+    			<div class="element">
+    				<div class="text">오늘 방문자</div>
+    				<div id="toay_visitor_count" class="count" th:text="${today_visitor_count}">5496</div>
+    			</div>
+    			<div class="element">
+    				<div class="text">누적 방문자</div>
+    				<div id="total_visitor_count" class="count">78979878</div>
+    			</div>
+    		</div>
+    	<canvas id="chart"></div>
+    </div>
+</body>
+</html>

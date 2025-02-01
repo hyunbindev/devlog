@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{thymeleaf/manage/manage_layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <title>관리자 페이지</title>
+</head>
+<body>
+    <!-- info fragment를 레이아웃 내에 포함시킴 -->
+    <div layout:fragment="menu" th:replace="~{thymeleaf/manage/menu}"></div>
+
+    <div layout:fragment="content" class="content">
+    	
+    </div>
+</body>
+</html>
